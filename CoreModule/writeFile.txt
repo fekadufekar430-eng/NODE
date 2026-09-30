@@ -1,0 +1,1 @@
+hello my Friendsadded text from old file using append file sync method 

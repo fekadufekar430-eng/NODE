@@ -1,0 +1,38 @@
+
+   #@ PATH MODULE
+
+The path module helps you handle and manipulate file paths 
+so your code works correctly across different operating systems (Windows, Mac, Linux).
+
+const path = require('path');
+
+// 1. path.join(): Safely combines multiple path segments together 
+// (it automatically handles forward/backward slashes based on your OS)
+const fullPath = path.join('/users', 'fikadu', 'projects', 'note.txt');
+console.log(fullPath);
+// Output: /users/fikadu/projects/note.txt  (or \users\fikadu\projects\note.txt on Windows)
+
+
+// 2. path.extname(): Extracts the file extension (.js, .txt, .html, etc.)
+const extension = path.extname('index.html');
+console.log(extension);
+// Output: .html
+
+
+// 3. path.basename(): Extracts just the file name from a full path
+const fileName = path.basename('/home/fikadu/documents/report.pdf');
+console.log(fileName);
+// Output: report.pdf
+
+
+// 4. path.dirname(): Extracts just the folder directory from a full path
+const dirName = path.dirname('/home/fikadu/documents/report.pdf');
+console.log(dirName);
+// Output: /home/fikadu/documents
+
+
+Why use the path module?
+Different operating systems use different path separators 
+(Windows uses \ like folder\file.txt, while Mac/Linux use / like folder/file.txt). 
+The path module prevents bugs by automatically using the correct separator 
+for whatever computer your app is running on!

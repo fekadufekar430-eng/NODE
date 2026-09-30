@@ -1,0 +1,93 @@
+
+
+
+
+const fs = require('fs');
+
+// ==========================================
+// 1. FILE WRITE, APPEND & READ METHODS
+// ==========================================
+
+// writeFile / writeFileSync: Creates a new file or overwrites existing content
+fs.writeFileSync('note.txt', 'Hello Abebe! This is the first text.');
+// Output: Creates 'note.txt' with content: "Hello Abebe! This is the first text."
+
+// appendFile / appendFileSync: Adds new text to the end of an existing file without deleting old data
+fs.appendFileSync('note.txt', '\nThis is an added phrase.');
+// Output: Updates 'note.txt' to:
+// Hello Abebe! This is the first text.
+// This is an added phrase.
+
+// readFile / readFileSync: Reads the content of a file
+const data = fs.readFileSync('note.txt', 'utf8');
+console.log(data);
+// Output: 
+// Hello Abebe! This is the first text.
+// This is an added phrase.
+
+
+// ==========================================
+// 2. FILE EXISTENCE CHECK METHOD
+// ==========================================
+
+// existsSync: Checks if a file or directory exists (returns true or false)
+const fileExists = fs.existsSync('note.txt');
+console.log(fileExists);
+// Output: true
+
+
+// ==========================================
+// 3. COPY & RENAME METHODS
+// ==========================================
+
+// copyFileSync: Copies content from one file to another
+fs.copyFileSync('note.txt', 'backup.txt');
+// Output: Creates 'backup.txt' with the exact same content as 'note.txt'.
+
+// renameSync: Renames a file or moves it to a new location
+fs.renameSync('backup.txt', 'new_backup.txt');
+// Output: Renames 'backup.txt' to 'new_backup.txt'.
+
+
+// ==========================================
+// 4. DELETE & REMOVE METHODS
+// ==========================================
+
+// unlinkSync: Deletes a specific file
+fs.unlinkSync('new_backup.txt');
+// Output: Deletes 'new_backup.txt' from the file system.
+
+// mkdirSync: Creates a new directory/folder
+fs.mkdirSync('myFolder');
+// Output: Creates a new folder named 'myFolder'.
+
+// rmdirSync: Removes an empty directory
+fs.rmdirSync('myFolder');
+// Output: Deletes the empty 'myFolder'.
+
+// rmSync: Recursively deletes a folder even if it contains files/sub folders
+fs.rmSync('myFolder', { recursive: true, force: true });
+// Output: Forcefully deletes 'myFolder' and everything inside it.
+
+
+// ==========================================
+// 5. DIRECTORY LISTING METHOD
+// ==========================================
+
+// readdirSync: Returns an array of file and folder names inside a directory
+const files = fs.readdirSync('./');
+console.log(files);
+// Output: [ 'note.txt', 'app.js', 'node_modules' ]  (depending on your current directory files)
+
+
+// ==========================================
+// 6. FILE STATS METHOD
+// ==========================================
+
+// statSync: Returns details about a file (size, creation time, type, etc.)
+const stats = fs.statSync('note.txt');
+console.log('File size in bytes:', stats.size);
+// Output: File size in bytes: 63  (approximate number based on content length)
+
+console.log('Is it a file?', stats.isFile());
+// Output: Is it a file? true
